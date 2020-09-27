@@ -70,6 +70,7 @@ export default class TodoList extends BasicList {
           todo.due = moment(dueDate.trim(), dateFormat).toDate().toString()
         }
       }
+      todo.description= await workspace.requestInput('Input description')
       await this.db.update(uid, todo)
       workspace.showMessage('Todo item updated')
     })
